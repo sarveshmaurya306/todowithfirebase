@@ -54,10 +54,12 @@ function RenderTodos() {
     }
 
     if (data?.length === 0) {
-        return <center>
+        return <div style={{color:'white', height:'100vh'}}>
+            <center>
             <h1> Nothing to show...</h1>
             <p>Wanna add something in your todo App?</p>
         </center>
+        </div>
 
     }
     return (

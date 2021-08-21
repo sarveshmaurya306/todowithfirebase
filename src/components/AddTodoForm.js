@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Select, MenuItem, Grid, ButtonGroup, Divider, Fab, Tooltip } from '@material-ui/core'
+import { TextField, Select, MenuItem, Grid, ButtonGroup, Divider, Fab, Tooltip, Button } from '@material-ui/core'
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { db } from '../firebase';
@@ -21,7 +21,7 @@ const theme = createTheme({
 function AddTodo({ initialData,children }) {
     const d = useSelector(state => state.editTodo)
     //use redux here reading data;
-
+    // const const dispatch = useDispatch()
     const [name, setName] = useState('');
     const [description, setdescription] = useState('');
     const [status, setStatus] = useState("uncompleate");
@@ -43,6 +43,10 @@ function AddTodo({ initialData,children }) {
         setdescription('')
         setStatus("uncompleate")
         setId('')
+        
+        // dispatch({
+        //     type:'RESET'
+        // })
     }
 
     const submit = (e) => {
@@ -76,31 +80,31 @@ function AddTodo({ initialData,children }) {
 
         <form onSubmit={submit} onReset={resetAll} style={{ marginTop: '40px' }}>
             <Grid container spacing={3} justifyContent="space-evenly" alignItems="center">
-                <Grid item  >
+                {/* <Grid item  >
                     <TextField value={name} onChange={e => setName(e.target.value)} label="Title" variant="outlined" />
-                </Grid>
+                </Grid> */}
                 <Grid item  >
-                    <TextField value={description} onChange={e => setdescription(e.target.value)} label="Description" variant="outlined" />
+                    <TextField value={description} onChange={e => setdescription(e.target.value)} label="What needs to be done?" variant="outlined" />
                 </Grid>
-                <Grid item  >
-                    <Select
-                        value={status}
-                        onChange={e => setStatus(e.target.value)}
-                    >
+                {/*  <Grid item  >
+                        <Select
+                            value={status}
+                            onChange={e => setStatus(e.target.value)}
+                        >
 
-                        <MenuItem value={"compleate"}>Compleate</MenuItem>
-                        <MenuItem value={"uncompleate"}>Not Compleate</MenuItem>
-                    </Select>
-                </Grid>
+                            <MenuItem value={"compleate"}>Compleate</MenuItem>
+                            <MenuItem value={"uncompleate"}>Not Compleate</MenuItem>
+                        </Select>
+                    </Grid> */}
                 <Grid item  >
                     <ThemeProvider theme={theme}>
                         <ButtonGroup>
                         <Tooltip title={id ? "Edit" : "Add"} >
-                            <Fab variant="contained" color="primary" type="submit"> {id ? <EditIcon /> : <AddIcon />} </Fab>
+                            <Button variant="contained" color="primary" type="submit"> {id ? <EditIcon /> : <AddIcon />} </Button>
 
                         </Tooltip>
                         <Tooltip title="Reset | Undo Selection">
-                            <Fab variant="contained" color="secondary" type="reset" > <RestoreIcon /> </Fab>
+                            <Button variant="contained" color="secondary" type="reset" > <RestoreIcon /> </Button>
 
                         </Tooltip>
                         </ButtonGroup>

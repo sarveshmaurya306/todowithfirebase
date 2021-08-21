@@ -34,15 +34,25 @@ function App() {
       <Home>
       {
         !url ?
-          <Tooltip title="Login">
-            <IconButton onClick={() => handleClick()}>
-              <img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt="google login" />
+            <Tooltip title="Login">
+              <div onClick={() => handleClick()} style={{cursor:'pointer'}}>
+              <IconButton >
+                <img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt="google login" />
             </IconButton>
+                <small style={{color:'white'}}>Login</small>
+              </div>
+            
           </Tooltip>
           : <Tooltip title={`Log out from ${auth.currentUser.displayName}`}>
-             <IconButton onClick={() => signOut()}>
-            <Avatar src={url} />
+            
+              <div onClick={() => signOut()} style={{cursor:'pointer'}}>
+              <IconButton >
+                <Avatar src={url} />
+
           </IconButton>
+                <small style={{color:'white'}}>Logout</small>
+              
+              </div>
           </Tooltip>
       }
       </Home>

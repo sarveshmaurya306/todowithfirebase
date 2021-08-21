@@ -10,6 +10,20 @@ import { useDispatch, useSelector} from 'react-redux'
 
 import { UpdateUserData } from '../actions/index'
 
+import { ThemeProvider } from '@material-ui/styles';
+import { createTheme } from '@material-ui/core';
+
+const theme = createTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      main: "#26a27b"
+    },
+   
+  }
+})
+
+
 function Home(props) {
   const dispatch = useDispatch();
   
@@ -32,7 +46,8 @@ function Home(props) {
   }, [])
 
   return (
-    <div style={{overflow:'hidden'}}>
+    <ThemeProvider theme={theme}>
+      <div style={{overflow:'hidden'}}>
       <div>
         <AddTodo >
           {props?.children}
@@ -44,6 +59,7 @@ function Home(props) {
         loading?<LoadingCardSkeleton />:<RenderTodos />
       }
     </div>
+    </ThemeProvider>
   )
 }
 

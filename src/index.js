@@ -9,7 +9,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
+        <div style={{background:"black"}}>
         <App/>
+        </div>
       </PersistGate>
     </Provider>
   </React.StrictMode>,
