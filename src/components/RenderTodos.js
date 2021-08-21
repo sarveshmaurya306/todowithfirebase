@@ -63,7 +63,7 @@ function RenderTodos() {
 
     }
     return (
-        <div style={{ margin: "0px 20px" }}>
+        <div style={{ margin: "0px 20px" , minHeight:'100vh'}}>
             <Masonry
                 breakpointCols={beakpoints}
                 className="my-masonry-grid"
